@@ -26,20 +26,21 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping("/user")
 public class AccountRestController {
     private AccountServices accountServices;
 // CETTE CONSTRUCTEUR NOUS PERMET DE FAIRE L'INJECTION DE DEPENDANCE
     public AccountRestController(AccountServices accountServices) {
-        this.accountServices = accountServices;
+
+      this.accountServices = accountServices;
     }
 
     // ICI ON LISTE TOUT LES UTILISATEURS
-
-
     @GetMapping(path = "/utilisateurs")
     @PostAuthorize("hasAuthority('ADMIN')")
     public List<UsersApp> utilisateurs(){
-        return accountServices.listerUsers();
+
+      return accountServices.listerUsers();
     }
 
     // ICI ON AJOUTE UN UTILISATEURS
@@ -50,11 +51,11 @@ public class AccountRestController {
     }
 
     // ICI ON AJOUTE UN ROLE
-
     @PostMapping(path = "/addroles")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String ajouterRoles(@RequestBody UserRoles userRoles){
-        return accountServices.addNewRoles(userRoles);
+
+      return accountServices.addNewRoles(userRoles);
     }
 
     //ICI ON ATTRIBUT UN ROLE A UN UTILISATEUR SPECIFIQUE
@@ -74,7 +75,6 @@ public class AccountRestController {
     }
 
     // REFRESH TOKEN TEST
-
     @GetMapping(path = "/refreshToken")
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -90,7 +90,7 @@ public class AccountRestController {
                 UsersApp usersApp = accountServices.loadUsersByUsername(username);
 
                 String JwtAccessToken = JWT.create()
-                        .withSubject(usersApp.getUsername())  // Le nom de suser pour generer le token
+                        .withSubject(usersApp.getUsername())  // Le nom de user pour generer le token
                         .withExpiresAt(new Date(System.currentTimeMillis() + JwtUtil.EXPIRE_TOKEN)) // Durée de mon token
                         .withIssuer(request.getRequestURL().toString()) // LE NOM DE L'APPLICATION UTILISER
                         .withClaim("roles", usersApp.getUserRoles().stream().map(r -> r.getRoleName()).collect(Collectors.toList()))
@@ -116,7 +116,8 @@ public class AccountRestController {
 
     @GetMapping(path = "/profile")
     public UsersApp Getprofile(Principal principal){
-    return accountServices.loadUsersByUsername(principal.getName());
+
+      return accountServices.loadUsersByUsername(principal.getName());
     }
 }
 

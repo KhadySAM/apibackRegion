@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 
@@ -34,13 +35,13 @@ public class ApiRegionsApplication {
 		accountServices.addNewRoles(new UserRoles(null,"USER"));
 
 		//ICI MES UTILISATEURS
-		accountServices.addNewUsers(new UsersApp(null,"adama","adama@gmail.com","1234",new ArrayList<>()));
-		accountServices.addNewUsers(new UsersApp(null,"awa","awa@gmail.com","1234",new ArrayList<>()));
+		accountServices.addNewUsers(new UsersApp(null,"kadi","kadi@gmail.com","1234",new ArrayList<>()));
+		accountServices.addNewUsers(new UsersApp(null,"kadidiatou","kadidiatou@gmail.com","1234",new ArrayList<>()));
 
 		// ICI ATRIBUTION DE ROLE A UN UTILISATEURS
 
-		accountServices.addRoleToUser("adama","ADMIN");
-		accountServices.addRoleToUser("awa","USER");
+		accountServices.addRoleToUser("kadi","ADMIN");
+		accountServices.addRoleToUser("kadidiatou","USER");
 
 
 	};

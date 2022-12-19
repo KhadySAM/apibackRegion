@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/refreshToken/**").permitAll()
                 .antMatchers("/projet/odk/Regions/**").permitAll();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.formLogin();
+       // http.formLogin();
         http.authorizeHttpRequests().anyRequest().permitAll();  // ICI ON GERE TOUTE LES PERMISSIONS
        // ICI ON AJOUTE NOTRE FILTRE
         http.addFilter(new JwtAuthentificationFilter(authenticationManagerBean()));

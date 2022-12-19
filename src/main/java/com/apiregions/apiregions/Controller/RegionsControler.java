@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/projet/odk/Regions", name = "Regions")
+@CrossOrigin
 public class RegionsControler {
 
     @Autowired
@@ -92,7 +93,7 @@ public class RegionsControler {
         if(regionsRepository.findByNomregions(nomregions) == null){
 
           //  String u = "C:/Users/adcoulibaly/Desktop/ERP/ApplicationERPInterface/src/assets/images";
-            String uploaDir = "C:/Users/adcoulibaly/Desktop/api-regions/api-regions/src/main/resources/static";
+            String uploaDir = "C:/Users/kssamake/Desktop/FrontGestionRegion/src/assets/Images";
             //String uploaDir = new ClassPathResource("files/").getFile().getAbsolutePath();
             ConfigImage.saveimg(uploaDir, nomfile, file);
             //  entiteServiceImplement.ajouter(entite);
