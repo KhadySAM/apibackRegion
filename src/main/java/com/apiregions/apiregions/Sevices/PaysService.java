@@ -71,6 +71,13 @@ public class PaysService {
         else {
             Pays paysT = paysRepository.findById(id_pays).get();
             paysT.setNompays(pays.getNompays());
+            paysT.setCapital(pays.getCapital());
+            paysT.setMoney(pays.getMoney());
+            paysT.setSuperf(pays.getSuperf());
+            paysT.setLangueoff(pays.getLangueoff());
+            paysT.setDatIdp(pays.getDatIdp());
+            paysT.setPopulation(pays.getPopulation());
+
             paysRepository.saveAndFlush(paysT);
             ReponseMessage message = new ReponseMessage("Pays modifié avec success", true);
             return message;

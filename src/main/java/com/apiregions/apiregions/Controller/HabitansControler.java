@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/projet/odk/Habitants",name ="Habitants")
+@CrossOrigin
 public class HabitansControler {
 
     private HabitantsService habitantsService;

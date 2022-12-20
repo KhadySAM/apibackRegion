@@ -80,12 +80,12 @@
                 }
                 else {
                     Regions RG =  this.regionsRepository.findById(id_regions).get();
-                    ReponseMessage message = new ReponseMessage(" Nom: "+RG.getNomregions()+" Pays: "+RG.getPays().getNompays()+" Activité "+RG.getActiviterregion()+" Code région: "+RG.getCoderegion()+" Langue: "+RG.getLanguemregion()+" Superficie: "+RG.getSuperficieregion(), true);
+                    ReponseMessage message = new ReponseMessage(" Nom: "+RG.getNomregions()+" Pays: "+RG.getPays().getNompays()+" Activité "+RG.getActiviterregion()+" Code région: "+RG.getCoderegion()+" Langue: "+RG.getLanguemregion()+" Superficie: "+RG.getSuperficieregion()+" Habitant: "+RG.getHabitant(), true);
                     return message;
                 }
 
             }
- //Modifier un pays
+ //Modifier une region
             public ReponseMessage modifierRegions(Regions regions, Long id_regions)
             {
                 Optional<Regions> regionExistePays = this.regionsRepository.findById(id_regions);
@@ -101,6 +101,7 @@
                     regions1.setSuperficieregion(regions.getSuperficieregion());
                     regions1.setCoderegion(regions.getCoderegion());
                     regions1.setNomregions(regions.getNomregions());
+                    regions1.setHabitant(regions.getHabitant());
                     regions1.setPays(regions.getPays());
                      this.regionsRepository.save(regions1);
                     ReponseMessage message = new ReponseMessage("Région modifiée avec succès !", true);

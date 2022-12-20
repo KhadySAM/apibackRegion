@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/projet/odk/Pays",name ="Pays")
-
+@CrossOrigin
 public class PaysControler {
   private PaysService paysService;
 
