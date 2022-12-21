@@ -43,30 +43,11 @@
 
 
 
-
-
-
-        /*
-            try {
-
-                 regionsRepository.save(regions);
-                 ReponseMessage message = new ReponseMessage("Région ajoutée avec succès",true);
-                 return message;
-            }
-            catch (Exception e)
-            {
-                ReponseMessage message = new ReponseMessage("Regions existe déja",false);
-                return message;
-            }
-
-         */
-
-
         }
 //Afficher la liste des Regions
         public List<Regions> afficherRegions()
             {
-                return regionsRepository.findAll();
+              return regionsRepository.findAll();
             }
 
 // Afficher une seule region
@@ -80,7 +61,7 @@
                 }
                 else {
                     Regions RG =  this.regionsRepository.findById(id_regions).get();
-                    ReponseMessage message = new ReponseMessage(" Nom: "+RG.getNomregions()+" Pays: "+RG.getPays().getNompays()+" Activité "+RG.getActiviterregion()+" Code région: "+RG.getCoderegion()+" Langue: "+RG.getLanguemregion()+" Superficie: "+RG.getSuperficieregion()+" Habitant: "+RG.getHabitant(), true);
+                    ReponseMessage message = new ReponseMessage(" Nom: "+RG.getNomregions()+" Pays: "+RG.getPays().getNompays()+" Activité "+RG.getActiviterregion()+" Code région: "+RG.getCoderegion()+" Langue: "+RG.getLanguemregion()+" Superficie: "+RG.getSuperficieregion()+" Habitant: "+RG.getHabitant()+" Commentaire: "+RG.getNombrecommentaire(), true);
                     return message;
                 }
 
@@ -102,6 +83,7 @@
                     regions1.setCoderegion(regions.getCoderegion());
                     regions1.setNomregions(regions.getNomregions());
                     regions1.setHabitant(regions.getHabitant());
+//                 regions1.setNombrecommentaire(regions.getNombrecommentaire());
                     regions1.setPays(regions.getPays());
                      this.regionsRepository.save(regions1);
                     ReponseMessage message = new ReponseMessage("Région modifiée avec succès !", true);

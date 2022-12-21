@@ -24,14 +24,6 @@ public class RegionsControler {
 
     @Autowired
     RegionsService regionsService;
-    //Controller
-            /*
-            @Autowired
-            public RegionsControler(RegionsService regionsService)
-            {
-                this.regionsService=regionsService;
-            }
-             */
 //Classe d'ajout des regions
 
     @PostMapping(path = "/creer", name = "create")
@@ -55,7 +47,7 @@ public class RegionsControler {
     private RegionsRepository regionsRepository;
 
     @PostMapping("/ajouterRegion")
-    public ReponseMessage ajouterRegion(@Param("nomregions") String nomregions,@Param("coderegion") String coderegion, @Param("activiterregion") String activiterregion, @Param("superficieregion") String superficieregion, @Param("languemregion") String languemregion, @Param("description") String description,  @Param("habitant") Long habitant, @Param("id_pays") Pays id_pays, @Param("file") MultipartFile file) throws IOException {
+    public ReponseMessage ajouterRegion(@Param("nomregions") String nomregions,@Param("coderegion") String coderegion, @Param("activiterregion") String activiterregion, @Param("superficieregion") String superficieregion, @Param("languemregion") String languemregion, @Param("habitant") Long habitant, @Param("id_pays") Pays id_pays, @Param("file") MultipartFile file) throws IOException {
         Regions regions = new Regions();
         String nomfile = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -65,8 +57,8 @@ public class RegionsControler {
         System.out.println(coderegion);
         regions.setCoderegion(coderegion);
 
-        System.out.println(description);
-        regions.setDescription(description);
+//        System.out.println(nombrecommentaire);
+//        regions.setNombrecommentaire(Integer.parseInt(nombrecommentaire));
 
         System.out.println(activiterregion);
         regions.setActiviterregion(activiterregion);
@@ -96,11 +88,11 @@ public class RegionsControler {
 
         if(regionsRepository.findByNomregions(nomregions) == null){
 
-          //  String u = "C:/Users/adcoulibaly/Desktop/ERP/ApplicationERPInterface/src/assets/images";
+
             String uploaDir = "C:/Users/kssamake/Desktop/FrontGestionRegion/src/assets/Images";
-            //String uploaDir = new ClassPathResource("files/").getFile().getAbsolutePath();
+
             ConfigImage.saveimg(uploaDir, nomfile, file);
-            //  entiteServiceImplement.ajouter(entite);
+
             return regionsService.ajouterRegions(regions);
         }else {
             ReponseMessage message = new ReponseMessage("Regions existe déja",false);
@@ -110,29 +102,14 @@ public class RegionsControler {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Classe afficher toute les regions
     @GetMapping(path = "/liste", name = "list")
     @ResponseStatus(HttpStatus.OK) //Permet de monter l'etat de notre requete
     public List<Regions> list() {
-        return this.regionsService.afficherRegions();
+
+      return this.regionsService.afficherRegions();
     }
-//Classe afficher une regions
+//Classe afficher une regions kadidia
 
 
     @GetMapping(path = "/uneRegion/{id_regions}", name = "lire")
@@ -169,15 +146,7 @@ public class RegionsControler {
     public Iterable<Object[]> mesRegionsAvecPays() {
         return this.regionsService.mesRegionsAvecPays();
     }
-/*
-            // Generale
-            @ApiOperation(value = "Crée une Region en generale")
-            @PostMapping(path ="/ajouter", name = "create")
-            public Regions Generale(Regions regions) {
-                return this.regionsService.Generale(regions);
-            }
 
- */
 
 
 }

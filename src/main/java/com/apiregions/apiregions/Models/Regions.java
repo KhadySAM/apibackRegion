@@ -26,7 +26,7 @@ public class Regions {
     private String superficieregion;
     private String languemregion;
     private String images;
-    private String description;
+//    private String description;
     private Long habitant;
     private int nombrecommentaire;
 
