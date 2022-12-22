@@ -23,7 +23,7 @@ public class Regions {
     @Column(unique = true)
     private String coderegion;
     private String activiterregion;
-    private String superficieregion;
+  //  private String superficieregion;
     private String languemregion;
     private String images;
 //    private String description;

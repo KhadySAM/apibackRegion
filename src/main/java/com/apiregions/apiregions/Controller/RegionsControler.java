@@ -47,7 +47,7 @@ public class RegionsControler {
     private RegionsRepository regionsRepository;
 
     @PostMapping("/ajouterRegion")
-    public ReponseMessage ajouterRegion(@Param("nomregions") String nomregions,@Param("coderegion") String coderegion, @Param("activiterregion") String activiterregion, @Param("superficieregion") String superficieregion, @Param("languemregion") String languemregion, @Param("habitant") Long habitant, @Param("id_pays") Pays id_pays, @Param("file") MultipartFile file) throws IOException {
+    public ReponseMessage ajouterRegion(@Param("nomregions") String nomregions,@Param("coderegion") String coderegion, @Param("activiterregion") String activiterregion,  @Param("languemregion") String languemregion, @Param("habitant") Long habitant, @Param("id_pays") Pays id_pays, @Param("file") MultipartFile file) throws IOException {
         Regions regions = new Regions();
         String nomfile = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -57,8 +57,6 @@ public class RegionsControler {
         System.out.println(coderegion);
         regions.setCoderegion(coderegion);
 
-//        System.out.println(nombrecommentaire);
-//        regions.setNombrecommentaire(Integer.parseInt(nombrecommentaire));
 
         System.out.println(activiterregion);
         regions.setActiviterregion(activiterregion);
@@ -66,14 +64,10 @@ public class RegionsControler {
         System.out.println(nomfile);
         regions.setImages(nomfile);
 
-        System.out.println(nomregions);
-        regions.setNomregions(nomregions);
 
         System.out.println(languemregion);
         regions.setLanguemregion(languemregion);
 
-        System.out.println(superficieregion);
-        regions.setSuperficieregion(superficieregion);
 
         System.out.println(nombrecommentaire);
         regions.setNombrecommentaire(0);

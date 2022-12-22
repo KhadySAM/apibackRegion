@@ -61,7 +61,7 @@
                 }
                 else {
                     Regions RG =  this.regionsRepository.findById(id_regions).get();
-                    ReponseMessage message = new ReponseMessage(" Nom: "+RG.getNomregions()+" Pays: "+RG.getPays().getNompays()+" Activité "+RG.getActiviterregion()+" Code région: "+RG.getCoderegion()+" Langue: "+RG.getLanguemregion()+" Superficie: "+RG.getSuperficieregion()+" Habitant: "+RG.getHabitant()+" Commentaire: "+RG.getNombrecommentaire(), true);
+                    ReponseMessage message = new ReponseMessage(" Nom: "+RG.getNomregions()+" Pays: "+RG.getPays().getNompays()+" Activité "+RG.getActiviterregion()+" Code région: "+RG.getCoderegion()+" Langue: "+RG.getLanguemregion()+" Superficie: "+" Habitant: "+RG.getHabitant()+" Commentaire: "+RG.getNombrecommentaire(), true);
                     return message;
                 }
 
@@ -79,7 +79,7 @@
                     Regions regions1 = regionsRepository.findById(id_regions).get();
                     regions1.setActiviterregion(regions.getActiviterregion());
                     regions1.setLanguemregion(regions.getLanguemregion());
-                    regions1.setSuperficieregion(regions.getSuperficieregion());
+                //    regions1.setSuperficieregion(regions.getSuperficieregion());
                     regions1.setCoderegion(regions.getCoderegion());
                     regions1.setNomregions(regions.getNomregions());
                     regions1.setHabitant(regions.getHabitant());
